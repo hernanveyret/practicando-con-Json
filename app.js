@@ -9,12 +9,14 @@ fetch('appi.json').then(response =>{
                 html += `<section>`
                 html += `<p>ARTICULO: ${articulos[i].articulo}</p>`;
                 html += `<p>MARCA: ${articulos[i].marca}</p>`;
-                html += `<img src="../../${articulos[i].imagen}" alt="${articulos[i].articulo}" />`
+                html += `<img src="${articulos[i].imagen}" alt="${articulos[i].articulo}" />`
                 html += `<p>COLOR:${articulos[i].color}</p>`;
                     if (articulos[i].otrosColores) {
-                        html += `<ol>`;
-                        html += `<li>${articulos[i].otrosColores[0].color}</li>`;
-                        html += `</ol>`;
+                        html += `<ul>`;
+                        for( let c in articulos[i].otrosColores ) {
+                        html += `<li>${articulos[i].otrosColores[c].color}</li>`;
+                    }
+                        html += `</ul>`;
                     }
                 html += `<p>$ ${articulos[i].precio}`;
                 html += `</section>`; 
